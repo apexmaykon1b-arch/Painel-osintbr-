@@ -25,29 +25,30 @@ O **Painel OSINT BR** unifica múltiplas ferramentas de investigação digital e
 Copie e cole as linhas de comando abaixo no seu terminal para preparar o ambiente, baixar o repositório, instalar todas as dependências do Python e executar a ferramenta de forma correta:
 
 ```bash
-# 1. Atualizar as listas do sistema e pacotes do Termux
+# 1. Atualizar Termux
 pkg update && pkg upgrade -y
 
-# 2. Instalar as ferramentas nativas necessárias (Git, Unzip e Python)
+# 2. Dependências do sistema (o que falta era o Python)
 pkg install git unzip python -y
 
-# 3. Clonar o repositório oficial do projeto
-git clone https://github.com
+# 3. Permissão de armazenamento (se for usar Downloads)
+termux-setup-storage
 
-# 4. Entrar na pasta do repositório
+# 4. Clonar o repositório
+cd \~
+git clone https://github.com/apexmaykon1b-arch/Painel-osintbr-.git
 cd Painel-osintbr-
 
-# 5. Extrair o arquivo compactado da versão atual
-unzip painel-osintbr-v1.5-cobertura-ampliada.zip
+# 5. Se o ZIP estiver no repo ou em Downloads, extraia:
+#    (pule se o main.py já estiver na pasta)
+unzip -o painel-osintbr-v1.5-cobertura-ampliada.zip
+# ou, se o ZIP estiver em Downloads:
+# unzip -o \~/storage/downloads/painel-osintbr-v1.5-cobertura-ampliada.zip
 
-# 6. Mudar para o diretório interno descompactado
-cd painel-osintbr-v1.5-cobertura-ampliada
+# 6. Entrar na pasta do programa (nome real dentro do ZIP)
+cd painel-osintbr-v1
 
-# 7. Instalar as bibliotecas e dependências do Python necessárias
-pip install --upgrade pip
-pip install requests colorama beautifulsoup4 urllib3
-
-# 8. Executar a ferramenta
+# 7. Abrir a ferramenta
 python main.py
 ```
 
